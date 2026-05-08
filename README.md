@@ -1,17 +1,4 @@
 # simple_music_player
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Do máy ảo gặp sự cố về quyền truy cập bộ nhớ (Permission denied), em đã cấu hình app sử dụng dữ liệu nhạc mẫu trực tiếp từ thư mục Assets để đảm bảo các tính năng phát nhạc, chuyển bài và giao diện hoạt động ổn định nhất cho việc chấm bài.
+<img width="408" height="930" alt="image" src="https://github.com/user-attachments/assets/a1c2f750-0ca8-4381-ada2-58fbae6c0a4c" />
