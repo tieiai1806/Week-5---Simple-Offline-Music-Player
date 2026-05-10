@@ -19,38 +19,51 @@ class MiniPlayer extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (_) => const NowPlayingScreen()),
+              PageRouteBuilder(
+                pageBuilder: (context, animation, secondaryAnimation) => const NowPlayingScreen(),
+                transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                  return FadeTransition(opacity: animation, child: child);
+                },
+              ),
             );
           },
           child: Container(
-            height: 70,
+            height: 80,
+            margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
               color: const Color(0xFF282828),
+              borderRadius: BorderRadius.circular(8),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.3),
-                  blurRadius: 10,
-                  offset: const Offset(0, -5),
+                  color: Colors.black.withOpacity(0.5),
+                  blurRadius: 15,
+                  offset: const Offset(0, -2),
                 ),
               ],
             ),
-            child: Column(
-              children: [
-                _buildProgressBar(provider),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Row(
-                      children: [
-                        _buildAlbumArt(song.albumArt),
-                        const SizedBox(width: 12),
-                        _buildSongInfo(song.title, song.artist),
-                        _buildControls(provider),
-                      ],
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Column(
+                children: [
+                  _buildProgressBar(provider),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      child: Row(
+                        children: [
+                          Hero(
+                            tag: 'album_art_${song.id}',
+                            child: _buildAlbumArt(song.albumArt),
+                          ),
+                          const SizedBox(width: 12),
+                          _buildSongInfo(song.title, song.artist),
+                          _buildControls(provider),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );
@@ -75,18 +88,18 @@ class MiniPlayer extends StatelessWidget {
 
   Widget _buildAlbumArt(String? albumArt) {
     return Container(
-      width: 45,
-      height: 45,
+      width: 56,
+      height: 56,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(4),
-        color: Colors.black26,
+        borderRadius: BorderRadius.circular(8),
+        color: const Color(0xFF191414),
       ),
       child: albumArt != null && File(albumArt).existsSync()
           ? ClipRRect(
-              borderRadius: BorderRadius.circular(4),
+              borderRadius: BorderRadius.circular(8),
               child: Image.file(File(albumArt), fit: BoxFit.cover),
             )
-          : const Icon(Icons.music_note, color: Colors.white30),
+          : const Icon(Icons.music_note, color: Color(0xFF1DB954)),
     );
   }
 
@@ -100,12 +113,13 @@ class MiniPlayer extends StatelessWidget {
             title,
             style: const TextStyle(
               color: Colors.white,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.bold,
               fontSize: 14,
             ),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
+          const SizedBox(height: 2),
           Text(
             artist,
             style: const TextStyle(
@@ -122,23 +136,26 @@ class MiniPlayer extends StatelessWidget {
 
   Widget _buildControls(AudioProvider provider) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
         StreamBuilder<bool>(
           stream: provider.playingStream,
           builder: (context, snapshot) {
             final isPlaying = snapshot.data ?? false;
             return IconButton(
+              constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
               icon: Icon(
                 isPlaying ? Icons.pause : Icons.play_arrow,
                 color: Colors.white,
-                size: 30,
+                size: 32,
               ),
               onPressed: () => provider.playPause(),
             );
           },
         ),
         IconButton(
-          icon: const Icon(Icons.skip_next, color: Colors.white),
+          constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
+          icon: const Icon(Icons.skip_next, color: Colors.white, size: 28),
           onPressed: () => provider.next(),
         ),
       ],
