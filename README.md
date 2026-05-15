@@ -6,9 +6,9 @@ Do máy ảo gặp sự cố về quyền truy cập bộ nhớ (Permission deni
 <img width="393" height="911" alt="image" src="https://github.com/user-attachments/assets/9735fbe8-3013-499f-964c-4da37b2d2091" />
 <img width="394" height="911" alt="image" src="https://github.com/user-attachments/assets/c0853567-29b1-4b3e-a15e-1b759f886f32" />
 
-# link Video ạ: 
-              https://drive.google.com/file/d/14hWtlr1B_4-0zFdPDslbG5XzcTQkYqkL/view?usp=drive_link
-              https://drive.google.com/file/d/1vRoKFxYqjxLIAYfbUMOf0hQ4YZNRXS-J/view?usp=drive_link 
+# link Video ạ: https://drive.google.com/file/d/14hWtlr1B_4-0zFdPDslbG5XzcTQkYqkL/view?usp=drive_link,  
+
+https://drive.google.com/file/d/1vRoKFxYqjxLIAYfbUMOf0hQ4YZNRXS-J/view?usp=drive_link 
 # Nội dung:
 # PHẦN 1: GIỚI THIỆU CHI TIẾT THƯ VIỆN
 *(Mở file `pubspec.yaml`)*
