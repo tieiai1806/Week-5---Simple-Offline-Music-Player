@@ -7,7 +7,6 @@ Do máy ảo gặp sự cố về quyền truy cập bộ nhớ (Permission deni
 
 # PHẦN 1: GIỚI THIỆU CHI TIẾT THƯ VIỆN
 *(Mở file `pubspec.yaml`)*
-## Lời thoại gợi ý:
 > "Thưa cô, để xây dựng ứng dụng nghe nhạc hoàn chỉnh này, em đã phối hợp nhiều thư viện chuyên biệt nhằm giải quyết các bài toán từ phần cứng đến giao diện:"
 ---
 # 1. Nhóm Điều khiển Âm thanh (Cốt lõi):
